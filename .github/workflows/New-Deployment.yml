@@ -7,7 +7,6 @@ on:
 
 jobs:
   compile:
-
     runs-on: self-hosted
 
     steps:
@@ -76,6 +75,12 @@ jobs:
         cache: maven
     - name: Build Project 
       run: mvn package
+    - name: Upload Jar Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: app.jar
+        path: target/*.jar
+
     - uses: actions/checkout@v4
       with:
         # Disabling shallow clones is recommended for improving the relevancy of reporting
