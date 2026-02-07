@@ -47,6 +47,7 @@ jobs:
   test:
 
     runs-on: self-hosted
+    needs: compile
 
     steps:
     - uses: actions/checkout@v4
@@ -63,6 +64,7 @@ jobs:
   build_project_and_sonar_scan:
 
     runs-on: self-hosted  
+    needs: test
 
     steps:
     - uses: actions/checkout@v4
